@@ -1,6 +1,6 @@
 # Multiple Futures Prediction
 
-This repository accompanies the paper [**CfD**]() and implements the Multiple Futures Prediction (MFP) baseline in the paper.
+This repository accompanies the paper [**Contingencies From Observations (CfD)**]() (ICRA 2021) and implements the Multiple Futures Prediction (MFP) baseline in the paper.
 It is based on the public repository [https://github.com/apple/ml-multiple-futures-prediction](https://github.com/apple/ml-multiple-futures-prediction) from the authors of the [MFP paper](https://arxiv.org/abs/1911.00997).
 
 ### Installation
@@ -29,7 +29,7 @@ export PYTHONPATH=$PYTHONPATH:$CARLA_ROOT/PythonAPI/carla/dist/carla-0.9.6-py3.5
 
 This repo trains an MFP model on the same dataset used in CfD.
 
-First download the CfD dataset following the instructions in the [CfD repo]().
+First download the CfD dataset following the instructions in the [CfD repo](https://github.com/JeffTheHacker/ContingenciesFromObservations).
 
 Next, either copy the dataset to the `multiple_futures_prediction` folder, or create a link pointing to the folder:
 ```sh
