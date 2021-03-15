@@ -1,0 +1,35 @@
+# Parameters for Params:
+# ==============================================================================
+Params.bi_direc = True
+Params.data_aug = False
+Params.dec_nbr_enc_size = 8
+Params.decoder_size = 128
+Params.dyn_embedding_size = 32
+Params.encoder_size = 64
+Params.fut_len_orig_hz = 30
+Params.hist_len_orig_hz = 15
+Params.input_embedding_size = 32
+Params.iter_per_err = 100
+Params.iter_per_eval = 1000
+Params.iters_per_save = 5000
+Params.log = 1
+Params.lr_init = 0.001
+Params.min_lr = 5e-05
+Params.model_version = 'simple_clean'
+Params.modes = 5
+Params.nbr_atten_embedding_size = 80
+Params.nbr_search_depth = 10
+Params.nll = True
+Params.no_atten_model = True
+Params.pre_train_num_updates = 0
+Params.remove_y_mean = False
+Params.rotate_pov = True
+Params.scenario = 2
+Params.seed = 1234
+Params.self_norm = True
+Params.subsampling = 1
+Params.updates_div_by_10 = 100000
+Params.use_context = False
+Params.use_cuda = True
+Params.use_forcing = 0
+Params.use_gru = True

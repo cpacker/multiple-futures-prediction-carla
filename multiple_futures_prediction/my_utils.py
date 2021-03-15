@@ -11,6 +11,32 @@ import json
 import os
 
 
+def rotate_np(origin, points, angle, degrees=True):
+    """rotates a traj counter-clockwise by 
+       an angle around an origin in degrees"""
+    if degrees: angle = np.deg2rad(angle)
+    R = np.array([[np.cos(angle), -np.sin(angle)],
+                  [np.sin(angle),  np.cos(angle)]])
+    o = np.atleast_2d(origin)
+    p = np.atleast_2d(points)
+    # @ is MM
+    return np.squeeze((R @ (p.T-o.T) + o.T).T)
+
+
+def rotate_torch(o, p, angle, degrees=True):
+    """same as rotate_np, but in torch"""
+    if degrees: raise NotImplementedError
+    R = torch.Tensor([[torch.cos(angle), -torch.sin(angle)],
+                      [torch.sin(angle),  torch.cos(angle)]]).to(o.device)
+    if len(o.shape) == 1: o = torch.unsqueeze(o,0)
+    if len(p.shape) == 1: p = torch.unsqueeze(p,0)
+    assert o.shape == (1,2), o.shape
+    assert len(p.shape) == 2 and p.shape[1] == 2, p.shape
+    oT = torch.transpose(o,0,1)
+    pT = torch.transpose(p,0,1)
+    return torch.squeeze(torch.transpose(R @ (pT-oT) + oT,0,1))
+
+
 """Helper functions for loss or normalizations.
 """
 

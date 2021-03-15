@@ -1,101 +1,68 @@
 # Multiple Futures Prediction
-## Paper
-This software accompanies the paper [**Multiple Futures Prediction**](https://arxiv.org/abs/1911.00997). ([Poster](multiple_futures_prediction/assets/imgs/neurips_mfp_poster.pdf))<br>
-[Yichuan Charlie Tang](https://www.cs.toronto.edu/~tang) and Ruslan Salakhutdinov<br>
-Neural Information Processing Systems, 2019. (NeurIPS 2019)
 
+This repository accompanies the paper [**CfD**]() and implements the Multiple Futures Prediction (MFP) baseline in the paper.
+It is based on the public repository [https://github.com/apple/ml-multiple-futures-prediction](https://github.com/apple/ml-multiple-futures-prediction) from the authors of the [MFP paper](https://arxiv.org/abs/1911.00997).
 
-Please cite our paper if you find our work useful for your research:
-```
-@article{tang2019mfp,
-  title={Multiple Futures Prediction},
-  author={Tang, Yichuan Charlie and Salakhutdinov, Ruslan},
-  booktitle={Advances in neural information processing systems},
-  year={2019}
-}
-```
+### Installation
 
-## Introduction
-Multiple Futures Prediction (MFP) is a framework for learning to forecast or predict future trajectories of agents, such as vehicles or pedestrians. A key feature of our framework is that it is able to learn multiple modes or multiple possible futures, by learning directly from trajectory data without annotations. Multi-agent interactions are also taken into account and the framework scales to an arbitrary number of agents in the scene by using a novel dynamic attention mechanism. It currently achieves state-of-the-art results on three vehicle forecasting datasets.
-
-This research code is for demonstration purposes only. Please see the paper for more details.
-
-### Overall Architecture
-<p align="center">
-<img src='multiple_futures_prediction/assets/imgs/mfp_comp_graph.png' width="700px"/>
-
-The Multiple Futures Prediction (MFP) architecture is shown above. For an arbitrary number of agents in the scene, we first use RNNs to encode their past trajectories into feature vectors. Dynamic attentional contextual encoding aggregates interactions and relational information. For each agent, a distribution over its latent modes are then predicted. You can think of the latent modes representing conservative/aggressive behaviors or directional (left vs. right turns) intentions. Given a distribution over the latent modes, decoding RNNs are then employed to decode or forecast future temporal trajectories. The MFP is a latent-variable graphical model and we use the EM algorithm to optimize the evidence lower-bound.
-
-
-## Getting Started
-
-### Prerequisites
-This code is tested with Python 3.6, and PyTorch 1.1.0. Conda or Virtualenv is recommended.<br>
-Use pip (recent version, e.g. 20.1) to install dependencies, for example:
-```
+Apart from CARLA, the install follows the original MFP repo:
+```sh
 python3.6 -m venv .venv # Create new venv
 source ./venv/bin/activate # Activate it
 pip install -U pip # Update to latest version of pip
 pip install -r requirements.txt # Install everything
 ```
 
-### Datasets
+All experiments were done using CARLA version 0.9.6. Make sure CARLA is installed and can be found in your environment:
+```sh
+# Downloads hosted binaries.
+wget http://carla-assets-internal.s3.amazonaws.com/Releases/Linux/CARLA_0.9.6.tar.gz
 
-#### How to Obtain NGSIM Data:
+# CARLA 0.9.6 installation.
+tar -xvzf CARLA_0.9.6.tar.gz -C $CARLA_ROOT
 
-1. Obtain NGSIM Dataset here (US-101 and I-80):<br>
-(https://data.transportation.gov/Automobiles/Next-Generation-Simulation-NGSIM-Vehicle-Trajector/8ect-6jqj)
+# Installs CARLA 0.9.6 Python API.
+export PYTHONPATH=$PYTHONPATH:$CARLA_ROOT/PythonAPI/carla/dist/carla-0.9.6-py3.5-linux-x86_64.egg
 ```
-Specifically you will need these files:
-US-101:
-'0750am-0805am/trajectories-0750am-0805am.txt'
-'0805am-0820am/trajectories-0805am-0820am.txt'
-'0820am-0835am/trajectories-0820am-0835am.txt'
 
-I-80:
-'0400pm-0415pm/trajectories-0400-0415.txt'
-'0500pm-0515pm/trajectories-0500-0515.txt'
-'0515pm-0530pm/trajectories-0515-0530.txt'
+### CARLA Dataset
+
+This repo trains an MFP model on the same dataset used in CfD.
+
+First download the CfD dataset following the instructions in the [CfD repo]().
+
+Next, either copy the dataset to the `multiple_futures_prediction` folder, or create a link pointing to the folder:
+```sh
+cd multiple_futures_prediction
+ln -s CFD_DATASET_LOCATION ./carla_dataset_cfd
 ```
-2. Preprocess dataset with code from Nachiket Deo and Mohan M. Trivedi:<br> [Convolutional Social Pooling for Vehicle Trajectory Prediction.] (CVPRW, 2018)<br>
-(https://github.com/nachiket92/conv-social-pooling)<br>
 
-3. From the conv-social-pooling repo, run prepocess_data.m, this should obtain three files:<br>
-TrainSet.mat, ValSet.mat, and TestSet.mat. Copy them to the ngsim_data folder.
-
-### Usage
-
-#### Training
-```bash
-train_ngsim --config multiple_futures_prediction/configs/mfp2_ngsim.gin
+This should create the following directory structure:
+```sh
+multiple_futures_prediction/carla_data_cfd/Left_Turn_Dataset
+multiple_futures_prediction/carla_data_cfd/Right_Turn_Dataset
+multiple_futures_prediction/carla_data_cfd/Overtake_Dataset
 ```
-or
-```bash
-python -m multiple_futures_prediction.cmd.train_ngsim_cmd --config multiple_futures_prediction/configs/mfp2_ngsim.gin
-```
-Hyperparameters (e.g. specifying how many modes of MFP) can be specified in the .gin config files.
 
-Expected training outputs:
-```
-Epoch no: 0 update: 99 | Avg train loss: 57.3198  learning_rate:0.00100
-Epoch no: 0 update: 199 | Avg train loss: 4.7679  learning_rate:0.00100
-Epoch no: 0 update: 299 | Avg train loss: 4.3250  learning_rate:0.00100
-Epoch no: 0 update: 399 | Avg train loss: 4.0717  learning_rate:0.00100
-Epoch no: 0 update: 499 | Avg train loss: 3.9722  learning_rate:0.00100
-Epoch no: 0 update: 599 | Avg train loss: 3.8525  learning_rate:0.00100
-Epoch no: 0 update: 699 | Avg train loss: 3.5253  learning_rate:0.00100
-Epoch no: 0 update: 799 | Avg train loss: 3.6077  learning_rate:0.00100
-Epoch no: 0 update: 899 | Avg train loss: 3.4526  learning_rate:0.00100
-Epoch no: 0 update: 999 | Avg train loss: 3.5830  learning_rate:0.00100
-Starting eval
-eval  val_dl nll
-tensor([-1.5164, -0.3173,  0.3902,  0.9374,  1.3751,  1.7362,  2.0362,  2.3008,
-         2.5510,  2.7974,  3.0370,  3.2702,  3.4920,  3.7007,  3.8979,  4.0836,
-         4.2569,  4.4173,  4.5682,  4.7082,  4.8378,  4.9581,  5.0716,  5.1855,
-         5.3239])
-```
-Depending on the CPU/GPU available, it can take from one to two days to complete 
-300K training updates on the NGSIM dataset and match the results in Table 5 of the paper.
+### Usage 
 
-## License
-This code is released under the [LICENSE](LICENSE) terms.
+To train a model, run `train_carla_cmd` on a desired config file:
+```sh
+python -m multiple_futures_prediction.cmd.train_carla_cmd \
+--config multiple_futures_prediction/configs/mfp2_carla_rightturn.py
+```
+
+To visualize a model, run `demo_carla_cmd` to replay files from training with predictions overlaid with ground truth at each timestep:
+```sh
+python -m multiple_futures_prediction.cmd.demo_carla_cmd \
+--checkpoint-dir CARLA_right_turn_scenario \  # directory with the saved model checkpoint
+--outdir mfp2_carla_rightturn_sclean_rotate_nopretrain \  # directory to write the images and video to
+--frames 200  # how many frames to include in the video
+```
+
+This repo includes saved models for each scenario in the paper, located in `checkpts`:
+```sh
+python -m multiple_futures_prediction.cmd.demo_carla_cmd --checkpoint-dir CARLA_left_turn_scenario --outdir mfp_carla_leftturn --frames 200
+python -m multiple_futures_prediction.cmd.demo_carla_cmd --checkpoint-dir CARLA_right_turn_scenario --outdir mfp_carla_rightturn --frames 200
+python -m multiple_futures_prediction.cmd.demo_carla_cmd --checkpoint-dir CARLA_overtake_scenario --outdir mfp_carla_overtake --frames 200
+```
