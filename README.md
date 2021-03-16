@@ -41,7 +41,7 @@ multiple_futures_prediction/carla_data_cfd/Overtake_Dataset
 To train a model, run `train_carla_cmd` on a desired config file:
 ```sh
 python -m multiple_futures_prediction.cmd.train_carla_cmd \
---config multiple_futures_prediction/configs/mfp2_carla_rightturn.py
+--config multiple_futures_prediction/configs/mfp_carla_rightturn.py
 ```
 
 To visualize a model, run `demo_carla_cmd` to replay files from training with predictions overlaid with ground truth at each timestep:
