@@ -3,7 +3,7 @@
 This repository accompanies the paper [**Contingencies From Observations (CfD)**]() (ICRA 2021) and implements the Multiple Futures Prediction (MFP) baseline in the paper.
 It is based on the public repository [https://github.com/apple/ml-multiple-futures-prediction](https://github.com/apple/ml-multiple-futures-prediction) from the authors of the [MFP paper](https://arxiv.org/abs/1911.00997).
 
-The MFP architecture has been modified from the original repo to not use attention (the scenarios used in CfD only use 2 agents). Additionally, it has been modified to support rotation of model inputs based on the each vehicle's yaw, such that the reference frame (for prediction) always starts with the ego vehicle at (0,0) and pointing in the +X direction. See the [CfD paper appendix]() for further details.
+The MFP architecture has been modified from the original repo to not use attention (the scenarios used in the CfD paper only use 2 agents). Additionally, it has been modified to support rotation of model inputs based on the each vehicle's yaw, such that the reference frame (for prediction) always starts with the ego vehicle at (0,0) and pointing in the +X direction. See the [CfD paper appendix]() for further details.
 
 MFP models trained on the CfD dataset can be used for planning, e.g., to control a vehicle in the CARLA simulator. To use an MFP model for control in a CfD scenario, follow the instructions for running MFP models in the [CfD repository]().
 
