@@ -48,7 +48,7 @@ To visualize a model, run `demo_carla_cmd` to replay files from training with pr
 ```sh
 python -m multiple_futures_prediction.cmd.demo_carla_cmd \
 --checkpoint-dir CARLA_right_turn_scenario \  # directory with the saved model checkpoint
---outdir mfp2_carla_rightturn_sclean_rotate_nopretrain \  # directory to write the images and video to
+--outdir mfp_carla_rightturn \  # directory to write the images and video to
 --frames 200  # how many frames to include in the video
 ```
 
