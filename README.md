@@ -21,7 +21,7 @@ pip install -r requirements.txt # Install everything
 
 This repo trains an MFP model on the same dataset used in CfD.
 
-First download the CfD dataset following the instructions in the [CfD repo](https://github.com/JeffTheHacker/ContingenciesFromObservations).
+First download (or generate) the CfD dataset following the instructions in the [CfD repo](https://github.com/JeffTheHacker/ContingenciesFromObservations).
 
 Next, either copy the dataset to the `multiple_futures_prediction` folder, or create a link pointing to the folder:
 ```sh
