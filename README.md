@@ -9,24 +9,12 @@ MFP models trained on the CfD dataset can be used for planning, e.g., to control
 
 ### Installation
 
-Apart from CARLA, the install follows the original MFP repo:
+The install follows the original MFP repo:
 ```sh
 python3.6 -m venv .venv # Create new venv
 source ./venv/bin/activate # Activate it
 pip install -U pip # Update to latest version of pip
 pip install -r requirements.txt # Install everything
-```
-
-All experiments were done using CARLA version 0.9.6. Make sure CARLA is installed and can be found in your environment:
-```sh
-# Downloads hosted binaries.
-wget http://carla-assets-internal.s3.amazonaws.com/Releases/Linux/CARLA_0.9.6.tar.gz
-
-# CARLA 0.9.6 installation.
-tar -xvzf CARLA_0.9.6.tar.gz -C $CARLA_ROOT
-
-# Installs CARLA 0.9.6 Python API.
-export PYTHONPATH=$PYTHONPATH:$CARLA_ROOT/PythonAPI/carla/dist/carla-0.9.6-py3.5-linux-x86_64.egg
 ```
 
 ### CARLA Dataset
