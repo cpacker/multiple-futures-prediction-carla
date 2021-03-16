@@ -9,10 +9,11 @@ MFP models trained on the CfD dataset can be used for planning, e.g., to control
 
 ### Installation
 
-The install follows the original MFP repo:
+The install follows the original MFP repo with some small modifications:
 ```sh
 python3.6 -m venv .venv # Create new venv
 source ./venv/bin/activate # Activate it
+conda install pytorch==1.1.0 torchvision==0.3.0 cudatoolkit=10.0 -c pytorch
 pip install -U pip # Update to latest version of pip
 pip install -r requirements.txt # Install everything
 ```
