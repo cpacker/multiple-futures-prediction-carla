@@ -1,11 +1,11 @@
 # Multiple Futures Prediction
 
-This repository accompanies the paper [**Contingencies From Observations (CfD)**](https://github.com/JeffTheHacker/ContingenciesFromObservations) (ICRA 2021) and implements the Multiple Futures Prediction (MFP) baseline in the paper.
+This repository accompanies the paper [**Contingencies From Observations (CfO)**](https://github.com/JeffTheHacker/ContingenciesFromObservations) (ICRA 2021) and implements the Multiple Futures Prediction (MFP) baseline in the paper.
 It is based on the public repository [https://github.com/apple/ml-multiple-futures-prediction](https://github.com/apple/ml-multiple-futures-prediction) from the authors of the [MFP paper](https://arxiv.org/abs/1911.00997).
 
-The MFP architecture has been modified from the original repo to not use attention (the scenarios used in the CfD paper only use 2 agents). Additionally, it has been modified to support rotation of model inputs based on the each vehicle's yaw, such that the reference frame (for prediction) always starts with the ego vehicle at (0,0) and pointing in the +X direction. See the [CfD paper appendix](https://github.com/JeffTheHacker/ContingenciesFromObservations) for further details.
+The MFP architecture has been modified from the original repo to not use attention (the scenarios used in the CfO paper only use 2 agents). Additionally, it has been modified to support rotation of model inputs based on the each vehicle's yaw, such that the reference frame (for prediction) always starts with the ego vehicle at (0,0) and pointing in the +X direction. See the [CfO paper appendix](https://github.com/JeffTheHacker/ContingenciesFromObservations) for further details.
 
-MFP models trained on the CfD dataset can be used for planning, e.g., to control a vehicle in the CARLA simulator. To use an MFP model for control in a CfD scenario, follow the instructions for running MFP models in the [CfD repository](https://github.com/JeffTheHacker/ContingenciesFromObservations).
+MFP models trained on the CfO dataset can be used for planning, e.g., to control a vehicle in the CARLA simulator. To use an MFP model for control in a CfO scenario, follow the instructions for running MFP models in the [CfD repository](https://github.com/JeffTheHacker/ContingenciesFromObservations).
 
 ### Installation
 
@@ -20,21 +20,21 @@ pip install -r requirements.txt # Install everything
 
 ### CARLA Dataset
 
-This repo trains an MFP model on the same dataset used in CfD.
+This repo trains an MFP model on the same dataset used in CfO.
 
-First download (or generate) the CfD dataset following the instructions in the [CfD repo](https://github.com/JeffTheHacker/ContingenciesFromObservations).
+First download (or generate) the CfO dataset following the instructions in the [CfO repo](https://github.com/JeffTheHacker/ContingenciesFromObservations).
 
 Next, either copy the dataset to the `multiple_futures_prediction` folder, or create a link pointing to the folder:
 ```sh
 cd multiple_futures_prediction
-ln -s CFD_DATASET_LOCATION ./carla_dataset_cfd
+ln -s CFD_DATASET_LOCATION ./carla_dataset_cfo
 ```
 
 This should create the following directory structure:
 ```sh
-multiple_futures_prediction/carla_data_cfd/Left_Turn_Dataset
-multiple_futures_prediction/carla_data_cfd/Right_Turn_Dataset
-multiple_futures_prediction/carla_data_cfd/Overtake_Dataset
+multiple_futures_prediction/carla_data_cfo/Left_Turn_Dataset
+multiple_futures_prediction/carla_data_cfo/Right_Turn_Dataset
+multiple_futures_prediction/carla_data_cfo/Overtake_Dataset
 ```
 
 ### Usage 
