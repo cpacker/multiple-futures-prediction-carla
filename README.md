@@ -27,7 +27,7 @@ First download (or generate) the CfO dataset following the instructions in the [
 Next, either copy the dataset to the `multiple_futures_prediction` folder, or create a link pointing to the folder:
 ```sh
 cd multiple_futures_prediction
-ln -s CFD_DATASET_LOCATION ./carla_dataset_cfo
+ln -s your/copy/of/cfo/dataset ./carla_dataset_cfo
 ```
 
 This should create the following directory structure:
