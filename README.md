@@ -24,7 +24,7 @@ This repo trains an MFP model on the same dataset used in CfO.
 
 First download (or generate) the CfO dataset following the instructions in the [CfO repo](https://github.com/JeffTheHacker/ContingenciesFromObservations).
 
-Next, either copy the dataset to the `multiple_futures_prediction` folder, or create a link pointing to the folder:
+Next, either copy the dataset to the `multiple_futures_prediction` folder, or create a link pointing to the dataset folder:
 ```sh
 cd multiple_futures_prediction
 ln -s your/copy/of/cfo/dataset ./carla_dataset_cfo
