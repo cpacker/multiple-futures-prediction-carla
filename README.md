@@ -1,4 +1,4 @@
-# Multiple Futures Prediction
+# Multiple Futures Prediction on CARLA data
 
 This repository accompanies the paper [**Contingencies From Observations (CfO)**](https://github.com/JeffTheHacker/ContingenciesFromObservations) (ICRA 2021) and implements the Multiple Futures Prediction (MFP) baseline in the paper.
 It is based on the public repository [https://github.com/apple/ml-multiple-futures-prediction](https://github.com/apple/ml-multiple-futures-prediction) from the authors of the [MFP paper](https://arxiv.org/abs/1911.00997).
