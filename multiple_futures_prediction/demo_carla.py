@@ -95,8 +95,7 @@ def demo(checkpoint_dir: str, checkpoint: str, config: str, outdir: str,
 
 
   ROOT_PATH = 'multiple_futures_prediction/'  
-  # TODO change DATA_PATH to point to your own copy of the CfD data 
-  DATA_PATH = os.path.join(ROOT_PATH, 'carla_data_cfd')
+  DATA_PATH = os.path.join(ROOT_PATH, 'carla_data_cfo')
   if params.scenario == 0:
     DATASET_DIR = os.path.join(DATA_PATH, 'Left_Turn_Dataset')
   elif params.scenario == 1:
