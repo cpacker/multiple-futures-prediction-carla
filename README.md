@@ -45,7 +45,7 @@ python -m multiple_futures_prediction.cmd.train_carla_cmd \
 --config multiple_futures_prediction/configs/mfp_carla_rightturn.py
 ```
 
-To visualize a model, run `demo_carla_cmd` to replay files from training with predictions overlaid with ground truth at each timestep:
+To visualize a model checkpoint, run `demo_carla_cmd` to replay files from training with predictions overlaid with ground truth at each timestep:
 ```sh
 python -m multiple_futures_prediction.cmd.demo_carla_cmd \
 --checkpoint-dir CARLA_right_turn_scenario \  # directory with the saved model checkpoint
@@ -53,7 +53,7 @@ python -m multiple_futures_prediction.cmd.demo_carla_cmd \
 --frames 200  # how many frames to include in the video
 ```
 
-This repo includes saved models for each scenario in the paper, located in `checkpts`:
+This repo includes saved models for each scenario in the paper, located in `checkpts` (their corresponding config files can be found in the [configs folder](multiple_futures_prediction/configs):
 ```sh
 python -m multiple_futures_prediction.cmd.demo_carla_cmd --checkpoint-dir CARLA_left_turn_scenario --outdir mfp_carla_leftturn --frames 200
 python -m multiple_futures_prediction.cmd.demo_carla_cmd --checkpoint-dir CARLA_right_turn_scenario --outdir mfp_carla_rightturn --frames 200
