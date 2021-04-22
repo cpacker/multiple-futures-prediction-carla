@@ -59,3 +59,16 @@ python -m multiple_futures_prediction.cmd.demo_carla_cmd --checkpoint-dir CARLA_
 python -m multiple_futures_prediction.cmd.demo_carla_cmd --checkpoint-dir CARLA_right_turn_scenario --outdir mfp_carla_rightturn --frames 200
 python -m multiple_futures_prediction.cmd.demo_carla_cmd --checkpoint-dir CARLA_overtake_scenario --outdir mfp_carla_overtake --frames 200
 ```
+
+### Citations
+
+To cite this work, use:
+```bibtex
+@inproceedings{rhinehart2021contingencies,
+    title={Contingencies from Observations: Tractable Contingency Planning with Learned Behavior Models},
+    author={Nicholas Rhinehart and Jeff He and Charles Packer and Matthew A. Wright and Rowan McAllister and Joseph E. Gonzalez and Sergey Levine},
+    booktitle={International Conference on Robotics and Automation (ICRA)},
+    organization={IEEE},
+    year={2021},
+}
+```
